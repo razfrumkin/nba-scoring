@@ -103,3 +103,5 @@ __pycache__/
 *.bak
 *.swp
 *~
+
+venv
