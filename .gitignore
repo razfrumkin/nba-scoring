@@ -94,3 +94,12 @@ dist
 .webpack/
 
 .svelte-kit
+
+__pycache__/
+*.pyc
+
+*.pyo
+
+*.bak
+*.swp
+*~
