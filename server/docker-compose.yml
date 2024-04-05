@@ -2,16 +2,16 @@ version: '3.8'
 
 services:
   db:
+    container_name: nba_container
     image: postgres:latest
     restart: always
     environment:
       POSTGRES_DB: nba
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - '5432:5432'
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     env_file:
       - .env
-
-volumes:
-  postgres_data:
+    volumes:
+      - './scripts:/docker-entrypoint-initdb.d'
