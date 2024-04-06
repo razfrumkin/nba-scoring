@@ -14,10 +14,8 @@ export class GamesService {
         const games = this.getGamesBySeasonAndTeam(season, team)
 
         switch (sort) {
-            case 'season':
-                return this.sortGamesBySeason(await games)
-            case 'team':
-                return this.sortGamesByTeam(await games)
+            case 'season': return this.sortGamesBySeason(await games)
+            case 'team': return this.sortGamesByTeam(await games)
             default: return games
         }
     }
@@ -38,7 +36,7 @@ export class GamesService {
 
         for (const game of games) {
             if (game.winnerId in collection) collection[game.winnerId].push(game)
-            else collection[game.seasonId] = [game]
+            else collection[game.winnerId] = [game]
 
             if (game.loserId in collection) collection[game.loserId].push(game)
             else collection[game.loserId] = [game]
@@ -77,6 +75,7 @@ export class GamesService {
     }
 
     async getAllGames(): Promise<Game[]> {
-        return this.postgresService.query('SELECT * FROM games ORDER BY datetime ASC')
+        const data = await this.postgresService.query('SELECT * FROM games ORDER BY datetime ASC')
+        return GamesSerializer.serializeGames(data)
     }
 }
