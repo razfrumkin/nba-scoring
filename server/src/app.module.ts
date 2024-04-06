@@ -4,9 +4,11 @@ import { AppService } from './app.service'
 import { PostgresModule } from './postgres/postgres.module'
 import { GamesModule } from './games/games.module'
 import { TeamsModule } from './teams/teams.module'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
     imports: [
+        ConfigModule.forRoot(),
         PostgresModule.forRoot(),
         TeamsModule,
         GamesModule

@@ -6,7 +6,7 @@ export class PostgresService implements OnModuleDestroy {
     private client: Client
 
     constructor() {
-        this.client = new Client({ database: 'postgres' })
+        this.client = new Client({ database: process.env.POSTGRES_NAME })
         this.client.connect()
     }
 

@@ -8,7 +8,7 @@ from colors import get_team_colors
 def get_connection() -> psycopg2.extensions.connection:
     environment_variables = dotenv_values('../.env')
 
-    return psycopg2.connect(dbname='postgres', user=environment_variables.get('POSTGRES_USER'), password=environment_variables.get('POSTGRES_PASSWORD'), host='localhost', port='5432')
+    return psycopg2.connect(dbname=environment_variables.get('POSTGRES_NAME'))
 
 def persist(*arguments: list[str]):
     if len(arguments) == 0:
