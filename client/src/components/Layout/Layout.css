@@ -43,5 +43,6 @@ img {
     display: block;
     width: 100vw;
     height: 100vh;
-    background-color: pink;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }

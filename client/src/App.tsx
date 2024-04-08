@@ -1,22 +1,14 @@
-import { useEffect, useState } from 'react'
 import { Layout } from './components/Layout'
-import { fetchGames } from './api'
+import { MainPage } from './pages'
+import { ThemeProvider } from './providers/theme'
 
 const App = () => {
-    const [data, setData] = useState<any>(undefined)
-
-    useEffect(() => {
-        fetchGames('all', 'all', 'team').then(response => {
-            setData(response)
-        })
-    }, [])
-
-    console.log(data)
-
     return (
-        <Layout>
-            <h1>App</h1>
-        </Layout>
+        <ThemeProvider>
+            <Layout>
+                <MainPage/>
+            </Layout>
+        </ThemeProvider>
     )
 }
 
