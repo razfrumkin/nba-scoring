@@ -1,4 +1,4 @@
-import './ThemeProvider.css'
+import './ThemeProvider.scss'
 import { useEffect, useState } from 'react'
 import Theme from './theme'
 import { IThemeContext, ThemeContext } from './themeContext'

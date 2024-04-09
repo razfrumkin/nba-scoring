@@ -1,7 +1,7 @@
 import json
 from dotenv import dotenv_values
 import psycopg2
-from utilities import year_to_season, season_to_year, parse_date, current_year, current_season, START_YEAR
+from utilities import year_to_season, season_to_year, parse_date, current_year, current_season, NBA_START_YEAR
 from game import TeamGameStats, Game
 from colors import get_team_colors
 
@@ -28,6 +28,10 @@ def persist_teams():
     try:
         connection = get_connection()
         cursor = connection.cursor()
+
+        with open('sql/teams.sql', 'r') as file:
+            script = file.read()
+            cursor.execute(script)
             
         with open(f'data/stats/teams.json', 'r') as file:
             data = json.loads(file.read())
@@ -66,6 +70,10 @@ def persist_games(*arguments: list[str]):
     try:
         connection = get_connection()
         cursor = connection.cursor()
+
+        with open('sql/games.sql', 'r') as file:
+            script = file.read()
+            cursor.execute(script)
                 
         if season_type == 'latest': persist_latest_games(cursor)
         elif season_type == 'all': persist_all_games(cursor)
@@ -89,7 +97,7 @@ def persist_latest_games(cursor: psycopg2.extensions.cursor):
 def persist_all_games(cursor: psycopg2.extensions.cursor):
     end_year = current_year()
     
-    for year in range(START_YEAR, end_year):
+    for year in range(NBA_START_YEAR, end_year):
         season = year_to_season(year)
         persist_specific_games(cursor, season)
         

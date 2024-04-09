@@ -1,4 +1,4 @@
-CREATE TABLE teams (
+CREATE TABLE IF NOT EXISTS teams (
     id INT PRIMARY KEY,
     full_name TEXT NOT NULL,
     abbreviation TEXT NOT NULL,

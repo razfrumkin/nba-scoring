@@ -1,4 +1,4 @@
-CREATE TABLE games (
+CREATE TABLE IF NOT EXISTS games (
     id TEXT PRIMARY KEY,
     winner_id INT NOT NULL,
     loser_id INT NOT NULL,

@@ -3,7 +3,7 @@ import time
 import json
 from nba_api.stats.static.teams import teams
 from nba_api.stats.endpoints import teamgamelogs
-from utilities import year_to_season, current_year, current_season, START_YEAR
+from utilities import year_to_season, current_year, current_season, NBA_START_YEAR
 
 def fetch(*arguments: list[str]):
     if len(arguments) == 0:
@@ -52,7 +52,7 @@ def fetch_latest_games():
 def fetch_all_games(timeout_seconds: float):
     end_year = current_year()
     
-    for year in range(START_YEAR, end_year):
+    for year in range(NBA_START_YEAR, end_year):
         season = year_to_season(year)
         fetch_specific_games(season)
         time.sleep(timeout_seconds)
