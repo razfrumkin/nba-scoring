@@ -10,10 +10,10 @@ export function seasonToYear(season: SeasonId): number {
     return parseInt(yearString)
 }
 
-export function currentYear(): number {
-    return new Date().getFullYear()
+export function currentSeason(): SeasonId {
+    return yearToSeason(currentYear() - 1)
 }
 
-export function currentSeason(): string {
-    return yearToSeason(currentYear() - 1)
+export function currentYear(): number {
+    return new Date().getFullYear()
 }
