@@ -7,7 +7,7 @@ from utilities import year_to_season, current_year, current_season, NBA_START_YE
 
 def fetch(*arguments: list[str]):
     if len(arguments) == 0:
-        return print('No season type provided')
+        return print('No data type provided')
     
     procedure = arguments[0]
     
@@ -29,6 +29,9 @@ def fetch_teams():
     print(f'Successfully saved teams as a raw json')
     
 def fetch_games(*arguments: list[str]):
+    if len(arguments) == 0:
+        return print('No season type provided')
+
     season_type = arguments[0]
     
     if season_type == 'latest':

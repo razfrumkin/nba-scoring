@@ -1,8 +1,16 @@
+import { useState } from 'react'
+import { ChartsDropdown } from '../components/Charts'
 import { Filter } from '../components/Filter'
 import { useTheme } from '../hooks'
+import { ChartType, SeasonId, Team } from '../models'
 
 const MainPage = () => {
     const { toggleTheme } = useTheme()
+
+    const [chart, setChart] = useState<ChartType | null>(null)
+
+    const [season, setSeason] = useState<SeasonId | null>(null)
+    const [team, setTeam] = useState<Team | null>(null)
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
@@ -10,6 +18,7 @@ const MainPage = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '15px' }}>
                         <span style={{ fontSize: '45px', fontWeight: 'bold', color: 'var(--secondary-text-color)' }}>Chart Type</span>
+                        <ChartsDropdown selectedChart={chart} setSelectedChart={setChart}/>
                         <div style={{ flexGrow: 1 }}></div>
                         <button style={{ padding: '15px', backgroundColor: 'var(--secondary-background-color)', color: 'var(--secondary-text-color)' }} onClick={toggleTheme}>Toggle Theme</button>
                     </div>
@@ -17,7 +26,7 @@ const MainPage = () => {
                         Main
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '15px' }}>
-                        <Filter width="500px" padding="15px" maxResultsHeight="150px"/>
+                        <Filter season={season} setSeason={setSeason} team={team} setTeam={setTeam} width="500px" padding="15px" maxResultsHeight="150px"/>
                         <div style={{ flexGrow: 1 }}></div>
                         <button style={{ padding: '15px', backgroundColor: 'var(--secondary-background-color)', color: 'var(--secondary-text-color)' }}>Save</button>
                     </div>
