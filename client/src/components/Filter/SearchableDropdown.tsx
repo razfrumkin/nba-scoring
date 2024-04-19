@@ -14,13 +14,16 @@ interface SearchableDropdownProps<T> {
     width?: string | number
     resultsListMaxHeight?: string | number
     placeholder?: string
+    disabled?: boolean
 }
 
-const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallback, getLabelCallback, getElementCallback, loadingElement, width, resultsListMaxHeight, placeholder }: SearchableDropdownProps<T>) => {
+const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallback, getLabelCallback, getElementCallback, loadingElement, width, resultsListMaxHeight, placeholder, disabled }: SearchableDropdownProps<T>) => {
     const [id, setId] = useState<string>('')
 
     const [prompt, setPrompt] = useState<string>('')
     const [isOpen, setIsOpen] = useState<boolean>(false)
+
+    const [isEditing, setIsEditing] = useState<boolean>(false)
 
     const { isLoading, data } = useQuery({ queryKey: [id, prompt], queryFn: async() => {
         return queryCallback(prompt)
@@ -29,6 +32,7 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
     const inputRef = useRef<HTMLInputElement>(null)
 
     const toggle = (event: any) => {
+        if (disabled) return
         setIsOpen(event.target === inputRef.current)
     }
 
@@ -39,9 +43,9 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
     }
 
     const getDisplayValue = (): string => {
-        if (prompt) return prompt
+        if (isEditing) return prompt
         if (selected) return getLabelCallback(selected)
-        return ''
+        return prompt
     }
 
     useEffect(() => {
@@ -55,7 +59,10 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
         if (isLoading) return loadingElement
 
         return data!.map(value => {
-            return <div key={getKeyCallback(value)} onClick={() => selectOption(value)}>{getElementCallback(value)}</div>
+            return <div key={getKeyCallback(value)} onClick={() => {
+                setIsEditing(false)
+                selectOption(value)
+            }}>{getElementCallback(value)}</div>
         })
     }
 
@@ -65,8 +72,9 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
                 <div className="selected-value">
                     <input ref={inputRef} type="text" value={getDisplayValue()} name="searchTerm" onChange={event => {
                         setPrompt(event.target.value)
+                        setIsEditing(true)
                         onChange(null)
-                    }} onClick={toggle} placeholder={placeholder}/>
+                    }} onClick={toggle} placeholder={placeholder} disabled={disabled}/>
                 </div>
 
                 <div className="arrow"></div>

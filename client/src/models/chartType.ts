@@ -1,4 +1,4 @@
 export enum ChartType {
-    ScoresHeatmap = 'Scores Heatmap',
+    ScoresHeatMap = 'Scores Heat Map',
     WinLoseRecord = 'Win Lose Record'
 }

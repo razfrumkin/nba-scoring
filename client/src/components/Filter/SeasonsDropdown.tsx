@@ -4,31 +4,41 @@ import { getAvailableSeasons, seasonToYear } from '../../utilities'
 import SearchableDropdown from './SearchableDropdown'
 
 interface SeasonsDropdownProps {
-    selectedSeason: SeasonId | null
-    setSelectedSeason: React.Dispatch<React.SetStateAction<SeasonId | null>>
+    selectedSeason: SeasonId | 'all' | null
+    onChange: (season: SeasonId | 'all' | null) => void
+    excludeOptionAll?: boolean
     width?: string | number
     resultsListMaxHeight?: string | number
+    disabled?: boolean
 }
 
-const SeasonsDropdown: React.FC<SeasonsDropdownProps> = ({ selectedSeason, setSelectedSeason, width, resultsListMaxHeight }) => {
-    const querySeasons = async(prompt: string): Promise<SeasonId[]> => {
+const SeasonsDropdown: React.FC<SeasonsDropdownProps> = ({ selectedSeason, onChange, excludeOptionAll, width, resultsListMaxHeight, disabled }) => {
+    const querySeasons = async(prompt: string): Promise<(SeasonId | 'all')[]> => {
         const seasons = getAvailableSeasons()
 
-        return [...seasons].reverse().filter(season => {
+        return ([...seasons].reverse().filter(season => {
             return seasonToYear(prompt) === season.year + 1 || season.id.includes(prompt)
-        }).map(season => season.id)
+        }).map(season => season.id) as (SeasonId | 'all')[]).concat(!excludeOptionAll && 'all'.includes(prompt.toLowerCase()) ? ['all'] : [])
     }
 
-    const seasonElement = (seasonId: SeasonId): JSX.Element => {
+    const label = (season: SeasonId | 'all'): string => {
+        return season === 'all' ? 'All' : season
+    }
+
+    const key = (season: SeasonId | 'all'): string => {
+        return label(season)
+    }
+
+    const seasonElement = (season: SeasonId | 'all'): JSX.Element => {        
         return (
             <div className="season-option">
-                <span>{seasonId}</span>
+                <span>{label(season)}</span>
             </div>
         )
     }
 
     return (
-        <SearchableDropdown onChange={season => setSelectedSeason(season)} selected={selectedSeason} queryCallback={querySeasons} getKeyCallback={season => season} getLabelCallback={season => season} getElementCallback={seasonElement} loadingElement={<span>Loading...</span>} width={width} resultsListMaxHeight={resultsListMaxHeight} placeholder="Select a season..."/>
+        <SearchableDropdown onChange={onChange} selected={selectedSeason} queryCallback={querySeasons} getKeyCallback={key} getLabelCallback={label} getElementCallback={seasonElement} loadingElement={<span>Loading...</span>} width={width} resultsListMaxHeight={resultsListMaxHeight} placeholder="Select a season..." disabled={disabled}/>
     )
 }
 
