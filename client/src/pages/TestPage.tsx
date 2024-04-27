@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TeamsDropdown } from '../components/Filter'
+import { TeamsDropdown } from '../components/Dropdowns'
 import { Team } from '../models'
 
 const TestPage = () => {

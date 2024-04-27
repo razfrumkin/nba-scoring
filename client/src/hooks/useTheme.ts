@@ -1,10 +1,11 @@
 import { useContext } from 'react'
-import { Theme, ThemeContext } from '../providers/theme'
+import { Theme, ThemeContext, ThemeType } from '../providers/theme'
 
 interface UseThemeReturnType {
-    theme: Theme
-    setTheme: React.Dispatch<React.SetStateAction<Theme>>
+    theme: ThemeType
+    setTheme: React.Dispatch<React.SetStateAction<ThemeType>>
     toggleTheme: () => void
+    properties: Theme
 }
 
 const useTheme = (): UseThemeReturnType => {
@@ -15,7 +16,7 @@ const useTheme = (): UseThemeReturnType => {
         context.setTheme(context.theme === 'light' ? 'dark' : 'light')
     }
 
-    return { theme: context.theme, setTheme: context.setTheme, toggleTheme: toggleTheme }
+    return { theme: context.theme, setTheme: context.setTheme, toggleTheme: toggleTheme, properties: context.themes[context.theme] }
 }
 
 export default useTheme

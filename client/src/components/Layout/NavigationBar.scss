@@ -1,0 +1,24 @@
+@import '../../providers/theme/ThemeProvider.scss';
+
+.navigation-bar {
+    ul {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        background-color: var(--secondary-background-color);
+
+        li {
+            .link {
+                display: block;
+                font-size: 20px;
+                color: var(--secondary-text-color);
+                padding: 20px;
+
+                &.active {
+                    color: var(--text-color);
+                    border-bottom: 3px solid var(--text-color);
+                }
+            }
+        }
+    }
+}

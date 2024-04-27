@@ -1,27 +1,27 @@
 .searchable-dropdown {
     position: relative;
-    color: var(--secondary-text-color);
+    color: var(--text-color);
     cursor: default;
   
     .arrow {
-        border-color: var(--secondary-text-color) transparent transparent;
+        border-color: var(--text-color) transparent transparent;
         border-style: solid;
         border-width: 5px 5px 0;
         content: ' ';
         display: block;
-        height: 0;
         margin-top: 0.3rem;
         position: absolute;
         right: 10px;
         top: 14px;
         width: 0;
+        height: 0;
     }
   
     .selected-value input {
         font-size: 1rem;
-        color: var(--secondary-text-color);
-        background-color: var(--secondary-background-color);
-        border: 1px solid var(--secondary-text-color);
+        color: var(--text-color);
+        background-color: var(--background-color);
+        border: 1px solid var(--text-color);
         border-radius: 10px;
         box-sizing: border-box;
         cursor: default;
@@ -36,8 +36,7 @@
   
     .options {
         display: none;
-        background-color: var(--secondary-background-color);
-        border: 1px solid var(--secondary-text-color);
+        border: 1px solid var(--text-color);
         box-sizing: border-box;
         margin-top: -1px;
         overflow-y: auto;
@@ -47,11 +46,13 @@
         z-index: 1000;
         -webkit-overflow-scrolling: touch;
         border-radius: 10px;
+        background-color: rgba(var(--secondary-background-color), 0.1);
+        backdrop-filter: blur(50px);
     }
 
     &.open {
         .arrow {
-            border-color: transparent transparent var(--secondary-text-color);
+            border-color: transparent transparent var(--text-color);
             border-width: 0 5px 5px;
         }
 
@@ -59,7 +60,7 @@
             display: block;
 
             > * {
-                border-bottom: 1px solid var(--secondary-text-color);
+                border-bottom: 1px solid var(--text-color);
     
                 &:last-child {
                     border-bottom: none;

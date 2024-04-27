@@ -1,5 +1,6 @@
+import { useLocation } from 'react-router-dom'
 import './Layout.scss'
-
+import NavigationBar from './NavigationBar'
 interface LayoutProps {
     children?: React.ReactNode
 }
@@ -7,7 +8,8 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="layout">
-            {children}
+            <NavigationBar/>
+            <main>{children}</main>
         </div>
     )
 }

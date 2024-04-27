@@ -19,19 +19,3 @@
     --dark-500: #6b6b6b;
     --dark-600: #878787;
 }
-
-.light {
-    --background-color: var(--light-100);
-    --secondary-background-color: var(--light-200);
-    --text-color: var(--dark-100);
-    --secondary-text-color: var(--dark-200);
-    --placeholder-text-color: var(--dark-500);
-}
-
-.dark {
-    --background-color: var(--dark-200);
-    --secondary-background-color: var(--dark-100);
-    --text-color: var(--light-100);
-    --secondary-text-color: var(--light-200);
-    --placeholder-text-color: var(--light-500);
-}

@@ -1,8 +1,7 @@
-.chart-option {
+.season-option {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-background-color);
     padding: 0.3rem;
 
     &.selected, &:hover {

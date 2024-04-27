@@ -8,3 +8,6 @@ export function setOpacity(hexColor: string, opacity: number): string {
 
     return `rgba(${red}, ${green}, ${blue}, ${opacity})`
 }
+
+export const GREEN = '#4bc0c0'
+export const RED = '#ff6384'

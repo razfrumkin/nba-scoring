@@ -1,4 +1,4 @@
 import MainPage from './MainPage'
-import TestPage from './TestPage'
+import StreaksPage from './StreaksPage'
 
-export { MainPage, TestPage }
+export { MainPage, StreaksPage }

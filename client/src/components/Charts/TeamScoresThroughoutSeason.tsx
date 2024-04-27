@@ -4,8 +4,8 @@ import { SeasonId, Team } from '../../models'
 import { DEFAULT_TEAM, currentSeason, formatDate } from '../../utilities'
 import { useGamesCollection } from '../../hooks'
 import { Line } from 'react-chartjs-2'
-import SeasonsDropdown from '../Filter/SeasonsDropdown'
-import { TeamsDropdown } from '../Filter'
+import SeasonsDropdown from '../Dropdowns/SeasonsDropdown'
+import { TeamsDropdown } from '../Dropdowns'
 
 Chart.register(LineElement, Filler)
 

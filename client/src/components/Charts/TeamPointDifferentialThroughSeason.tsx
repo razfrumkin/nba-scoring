@@ -4,8 +4,8 @@ import { Game, SeasonId, Team, TeamId } from '../../models'
 import { DEFAULT_TEAM, currentSeason, formatDate } from '../../utilities'
 import { useGamesCollection } from '../../hooks'
 import { Bar } from 'react-chartjs-2'
-import SeasonsDropdown from '../Filter/SeasonsDropdown'
-import { TeamsDropdown } from '../Filter'
+import SeasonsDropdown from '../Dropdowns/SeasonsDropdown'
+import { TeamsDropdown } from '../Dropdowns'
 
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 

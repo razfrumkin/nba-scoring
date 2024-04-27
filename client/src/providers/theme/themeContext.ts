@@ -1,9 +1,10 @@
 import { createContext } from 'react'
-import Theme from './theme'
+import { Theme, ThemeType } from './theme'
 
 export interface IThemeContext {
-    theme: Theme
-    setTheme: React.Dispatch<React.SetStateAction<Theme>>
+    themes: { [name in ThemeType]: Theme }
+    theme: ThemeType
+    setTheme: React.Dispatch<React.SetStateAction<ThemeType>>
 }
 
 export const ThemeContext = createContext<IThemeContext | null>(null)

@@ -1,5 +1,5 @@
 import { Chart, ChartData, ChartOptions, LinearScale, PointElement, Tooltip } from 'chart.js'
-import SeasonsDropdown from '../Filter/SeasonsDropdown'
+import SeasonsDropdown from '../Dropdowns/SeasonsDropdown'
 import { Scatter } from 'react-chartjs-2'
 import { useState } from 'react'
 import { GamesCollection, SeasonId, TeamId } from '../../models'
@@ -17,7 +17,7 @@ function calculateAverages(games: GamesCollection<'team'>): { teamId: TeamId, of
 
         for (const game of games[teamId]) {
             averages[id].offense += id === game.winnerId ? game.winnerPoints : game.loserPoints
-            averages[id].defense += id === game.winnerPoints ? game.loserPoints : game.winnerPoints
+            averages[id].defense += id === game.winnerId ? game.loserPoints : game.winnerPoints
         }
         
         averages[id].offense /= games[teamId].length

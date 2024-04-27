@@ -1,5 +1,5 @@
 import { Bar } from 'react-chartjs-2'
-import SeasonsDropdown from '../Filter/SeasonsDropdown'
+import SeasonsDropdown from '../Dropdowns/SeasonsDropdown'
 import { BarElement, CategoryScale, Chart, ChartData, ChartOptions, Legend, LinearScale, Title, Tooltip } from 'chart.js'
 import { useState } from 'react'
 import { GamesCollection, SeasonId, TeamId } from '../../models'
