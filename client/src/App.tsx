@@ -1,9 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Layout } from './components/Layout'
 import { ThemeProvider } from './providers/theme'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ChartsProvider } from './providers/charts'
-import { MainPage, StreaksPage } from './pages'
 import ROUTES from './pages/routes'
 
 const queryClient = new QueryClient({

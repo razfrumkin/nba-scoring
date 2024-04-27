@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { SeasonId, Team } from '../models'
-import { DEFAULT_TEAM, calculateStreaks, currentSeason } from '../utilities'
 import { useGamesCollection, useTheme } from '../hooks'
-import SeasonsDropdown from '../components/Dropdowns/SeasonsDropdown'
-import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData, StreaksChart } from '../components/Charts'
-import { TeamsDropdown } from '../components/Dropdowns'
+import { SeasonId, Team } from '../models'
+import { DEFAULT_TEAM, currentSeason } from '../utilities'
+import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData, SeasonScoresChart } from '../components/Charts'
+import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
 
-const StreaksPage = () => {
+const SeasonScoresPage = () => {
     const { properties } = useTheme()
 
     const [season, setSeason] = useState<SeasonId>(currentSeason())
@@ -14,22 +13,20 @@ const StreaksPage = () => {
 
     const { isLoading, games } = useGamesCollection(team.id, season, 'none')
 
-    const streaks = games === undefined ? [] : calculateStreaks(team.id, games)
-
     const renderChart = (): JSX.Element => {
         if (isLoading) return <LoadingChartIndicator/>
-        if (streaks.length === 0) return <NoChartData/>
+        if ((games ?? []).length === 0) return <NoChartData/>
 
         return (
             <ChartContainer>
-                <StreaksChart streaks={streaks} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false}/>
+                <SeasonScoresChart games={games!} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false}/>
             </ChartContainer>
         )
     }
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Streaks Chart" information="Some info">
+            <ChartOptionsBar title="Season Scores Chart" information="Some info">
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)} excludeOptionAll/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam((value ?? team) as Team)} excludeOptionAll/>
             </ChartOptionsBar>
@@ -39,4 +36,4 @@ const StreaksPage = () => {
     )
 }
 
-export default StreaksPage
+export default SeasonScoresPage

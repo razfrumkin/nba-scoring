@@ -1,6 +1,6 @@
-import { useLocation } from 'react-router-dom'
 import './Layout.scss'
 import NavigationBar from './NavigationBar'
+
 interface LayoutProps {
     children?: React.ReactNode
 }

@@ -13,9 +13,7 @@ interface StreaksChartProps {
 
 const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, foregroundColor, maintainAspectRatio }) => {
     const data: ChartData<'line'> = {
-        labels: streaks.map(streak => {
-            return formatDate(new Date(streak.game.date))
-        }),
+        labels: streaks.map(streak => formatDate(new Date(streak.game.date))),
         datasets: [
             {
                 data: streaks.map(streak => streak.streak),

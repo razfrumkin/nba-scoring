@@ -67,7 +67,7 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
     }
 
     return (
-        <div className={`searchable-dropdown ${isOpen ? 'open' : ''}`} style={{ width: width }}>
+        <div className={`searchable-dropdown ${isOpen ? 'open' : ''}`} style={{ width: width ?? '300px' }}>
             <div className="control">
                 <div className="selected-value">
                     <input ref={inputRef} type="text" value={getDisplayValue()} name="searchTerm" onChange={event => {
@@ -80,7 +80,7 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
                 <div className="arrow"></div>
             </div>
 
-            <div className="options" style={{ maxHeight: resultsListMaxHeight }}>
+            <div className="options" style={{ maxHeight: resultsListMaxHeight ?? '500px' }}>
                 {renderResults()}
             </div>
         </div>

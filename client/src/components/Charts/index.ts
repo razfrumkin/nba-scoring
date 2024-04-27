@@ -15,5 +15,6 @@ import NoChartData from './NoChartData'
 // import OffenseDefense from './OffenseDefence'
 
 import StreaksChart from './StreaksChart'
+import SeasonScoresChart from './SeasonScoresChart'
 
-export { ChartPageContainer, ChartOptionsBar, ChartContainer, LoadingChartIndicator, NoChartData, StreaksChart }
+export { ChartPageContainer, ChartOptionsBar, ChartContainer, LoadingChartIndicator, NoChartData, StreaksChart, SeasonScoresChart }
