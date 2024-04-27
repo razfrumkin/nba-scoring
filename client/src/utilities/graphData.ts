@@ -110,3 +110,15 @@ export function calculateLeads(games: GamesCollection<'none'>): { onePossessionG
 
     return { onePossessionGames: small, moderateLeads: medium, blowouts: big }
 }
+
+export function sortByScores(games: GamesCollection<'none'>): { score: string, games: GamesCollection<'none'> }[] {
+    const scores: { [score: string]: Game[] } = {}
+
+    games.forEach(game => {
+        const score = `${game.winnerPoints}-${game.loserPoints}`
+        if (score in scores) scores[score].push(game)
+        else scores[score] = [game]
+    })
+
+    return Object.keys(scores).map(score => ({ score: score, games: scores[score] }))
+}

@@ -1,3 +1,4 @@
+import './ChartOptionsBar.scss'
 import { InformationButton } from '../../Information'
 
 interface ChartOptionsBarProps {
@@ -8,9 +9,10 @@ interface ChartOptionsBarProps {
 
 const ChartOptionsBar: React.FC<ChartOptionsBarProps> = ({ title, information, children }) => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '3rem' }}>
-            <span style={{ textTransform: 'uppercase', fontSize: '60px', flex: 1 }}>{title}</span>
+        <div className="chart-options-bar">
+            <span className="title">{title}</span>
             <InformationButton information={information}/>
+            <div className="spacer"></div>
             {children}
         </div>
     )

@@ -1,0 +1,15 @@
+.chart-options-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+
+    .title {
+        text-transform: uppercase;
+        font-size: 64px;
+    }
+
+    .spacer {
+        flex: 1;
+    }
+}
