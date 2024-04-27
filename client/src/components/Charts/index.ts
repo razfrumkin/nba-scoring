@@ -8,5 +8,6 @@
 
 import StreaksChart from './StreaksChart'
 import SeasonScoresChart from './SeasonScoresChart'
+import PointDifferentialChart from './PointDifferentialsChart'
 
-export { StreaksChart, SeasonScoresChart }
+export { StreaksChart, SeasonScoresChart, PointDifferentialChart }

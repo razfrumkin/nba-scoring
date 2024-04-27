@@ -15,7 +15,7 @@ const StreaksPage = () => {
 
     const { isLoading, games } = useGamesCollection(team.id, season, 'none')
 
-    const streaks = games === undefined ? [] : calculateStreaks(team.id, games)
+    const streaks = calculateStreaks(team.id, games ?? [])
 
     const renderChart = (): JSX.Element => {
         if (isLoading) return <LoadingChartIndicator/>
@@ -23,7 +23,7 @@ const StreaksPage = () => {
 
         return (
             <ChartContainer>
-                <StreaksChart streaks={streaks} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false}/>
+                <StreaksChart streaks={streaks} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false} responsive/>
             </ChartContainer>
         )
     }

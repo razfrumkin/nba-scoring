@@ -1,4 +1,5 @@
 import MainPage from './MainPage'
+import PointDifferentialsPage from './PointDifferentialsPage'
 import SeasonScoresPage from './SeasonScoresPage'
 import StreaksPage from './StreaksPage'
 
@@ -17,6 +18,11 @@ const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
         location: '/season-scores',
         label: 'Season Scores',
         element: <SeasonScoresPage/>
+    },
+    {
+        location: '/point-differentials',
+        label: 'Point Differentials',
+        element: <PointDifferentialsPage/>
     },
     {
         location: '*',

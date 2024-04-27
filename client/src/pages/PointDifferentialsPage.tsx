@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { useGamesCollection, useTheme } from '../hooks'
 import { SeasonId, Team } from '../models'
 import { DEFAULT_TEAM, currentSeason } from '../utilities'
-import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
+import { calculateDifferentials } from '../utilities/graphData'
 import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData } from '../components/Charts/Static'
-import { SeasonScoresChart } from '../components/Charts'
+import { PointDifferentialChart } from '../components/Charts'
+import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
 
-const SeasonScoresPage = () => {
+const PointDifferentialsPage = () => {
     const { properties } = useTheme()
 
     const [season, setSeason] = useState<SeasonId>(currentSeason())
@@ -14,20 +15,22 @@ const SeasonScoresPage = () => {
 
     const { isLoading, games } = useGamesCollection(team.id, season, 'none')
 
+    const differentials = calculateDifferentials(team.id, games ?? [])
+
     const renderChart = (): JSX.Element => {
         if (isLoading) return <LoadingChartIndicator/>
-        if ((games ?? []).length === 0) return <NoChartData/>
+        if (differentials.length === 0) return <NoChartData/>
 
         return (
             <ChartContainer>
-                <SeasonScoresChart games={games!} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false} responsive/>
+                <PointDifferentialChart differentials={differentials} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false} responsive/>
             </ChartContainer>
         )
     }
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Season Scores Chart" information="Some info">
+            <ChartOptionsBar title="Point Differentials Chart" information="Some info">
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)} excludeOptionAll/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam((value ?? team) as Team)} excludeOptionAll/>
             </ChartOptionsBar>
@@ -37,4 +40,4 @@ const SeasonScoresPage = () => {
     )
 }
 
-export default SeasonScoresPage
+export default PointDifferentialsPage

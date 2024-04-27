@@ -8,9 +8,10 @@ interface SeasonScoresChartProps {
     games: GamesCollection<'none'>
     foregroundColor?: string
     maintainAspectRatio?: boolean
+    responsive?: boolean
 }
 
-const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, foregroundColor, maintainAspectRatio }) => {
+const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, foregroundColor, maintainAspectRatio, responsive }) => {
     const data: ChartData<'line'> = {
         labels: games.map(game => formatDate(new Date(game.date))),
         datasets: [
@@ -60,7 +61,7 @@ const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, fore
             }
         },
         maintainAspectRatio: maintainAspectRatio,
-        responsive: true
+        responsive: responsive
     }
 
     return (

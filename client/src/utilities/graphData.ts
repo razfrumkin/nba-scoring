@@ -1,6 +1,6 @@
-import { Game, TeamId } from '../models'
+import { Game, GamesCollection, TeamId } from '../models'
 
-export function calculateStreaks(teamId: TeamId, games: Game[]): { streak: number, game: Game }[] {
+export function calculateStreaks(teamId: TeamId, games: GamesCollection<'none'>): { streak: number, game: Game }[] {
     let streak = 0
     const streaks: { streak: number, game: Game }[] = []
 
@@ -19,4 +19,15 @@ export function calculateStreaks(teamId: TeamId, games: Game[]): { streak: numbe
     }
 
     return streaks
+}
+
+export function calculateDifferentials(teamId: TeamId, games: GamesCollection<'none'>): { differential: number, game: Game }[] {
+    const differentials: { differential: number, game: Game }[] = []
+
+    for (const game of games) {
+        const differential = teamId === game.winnerId ? game.winnerPoints - game.loserPoints : game.loserPoints - game.winnerPoints
+        differentials.push({ differential: differential, game: game })
+    }
+
+    return differentials
 }

@@ -1,35 +1,28 @@
-import '../../providers/theme/ThemeProvider.scss'
-import { Line } from 'react-chartjs-2'
-import { Game, Team } from '../../models'
 import { ChartData, ChartOptions } from 'chart.js'
+import { Game, Team } from '../../models'
+import { Bar } from 'react-chartjs-2'
 import { GREEN, RED, formatDate, setOpacity } from '../../utilities'
 
-interface StreaksChartProps {
+interface PointDifferentialsChartProps {
     team: Team
-    streaks: { streak: number, game: Game }[]
+    differentials: { differential: number, game: Game }[]
     foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, foregroundColor, maintainAspectRatio, responsive }) => {
-    const data: ChartData<'line'> = {
-        labels: streaks.map(streak => formatDate(new Date(streak.game.date))),
+const PointDifferentialsChart: React.FC<PointDifferentialsChartProps> = ({ team, differentials, foregroundColor, maintainAspectRatio, responsive }) => {
+    const data: ChartData<'bar'> = {
+        labels: differentials.map(differential => formatDate(new Date(differential.game.date))),
         datasets: [
             {
-                data: streaks.map(streak => streak.streak),
-                pointBackgroundColor: streaks.map(streak => setOpacity(streak.streak > 0 ? GREEN : RED, 0.75)),
-                tension: 0.5,
-                fill: {
-                    target: 'origin',
-                    above: setOpacity(GREEN, 0.75),
-                    below: setOpacity(RED, 0.75)
-                }
+                data: differentials.map(differential => differential.differential),
+                backgroundColor: differentials.map(differential => setOpacity(differential.differential > 0 ? GREEN : RED, 0.75))
             }
         ]
     }
 
-    const options: ChartOptions<'line'> = {
+    const options: ChartOptions<'bar'> = {
         scales: {
             y: {
                 ticks: {
@@ -44,13 +37,13 @@ const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, foregroundCo
             tooltip: {
                 callbacks: {
                     label: context => {
-                        const data = streaks[context.dataIndex]
+                        const data = differentials[context.dataIndex]
                         const game = data.game
                         const isWinner = team.id === game.winnerId
                         const leftPoints = isWinner ? game.winnerPoints : game.loserPoints
                         const rightPoints = isWinner ? game.loserPoints : game.winnerPoints
                         const matchup = isWinner ? game.winnerMatchup : game.loserMatchup
-                        return `${data.streak > 0 ? 'Winstreak' : 'Losing streak'}: ${Math.abs(data.streak)} | ${leftPoints}-${rightPoints}, ${matchup}`
+                        return `Point differential: ${data.differential} | ${leftPoints}-${rightPoints}, ${matchup}`
                     }
                 }
             }
@@ -60,8 +53,8 @@ const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, foregroundCo
     }
 
     return (
-        <Line data={data} options={options}/>
+        <Bar data={data} options={options}/>
     )
 }
 
-export default StreaksChart
+export default PointDifferentialsChart
