@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { useGamesCollection, useTheme } from '../hooks'
 import { SeasonId, Team } from '../models'
 import { DEFAULT_TEAM, currentSeason } from '../utilities'
-import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData, SeasonScoresChart } from '../components/Charts'
 import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
+import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData } from '../components/Charts/Static'
+import { SeasonScoresChart } from '../components/Charts'
 
 const SeasonScoresPage = () => {
     const { properties } = useTheme()

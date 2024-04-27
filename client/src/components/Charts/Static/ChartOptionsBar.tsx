@@ -1,4 +1,4 @@
-import { InformationButton } from "../Information"
+import { InformationButton } from '../../Information'
 
 interface ChartOptionsBarProps {
     title: string

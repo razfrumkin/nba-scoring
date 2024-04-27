@@ -3,8 +3,9 @@ import { SeasonId, Team } from '../models'
 import { DEFAULT_TEAM, calculateStreaks, currentSeason } from '../utilities'
 import { useGamesCollection, useTheme } from '../hooks'
 import SeasonsDropdown from '../components/Dropdowns/SeasonsDropdown'
-import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData, StreaksChart } from '../components/Charts'
 import { TeamsDropdown } from '../components/Dropdowns'
+import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData } from '../components/Charts/Static'
+import { StreaksChart } from '../components/Charts'
 
 const StreaksPage = () => {
     const { properties } = useTheme()
