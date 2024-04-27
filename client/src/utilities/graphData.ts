@@ -75,4 +75,20 @@ export function calculateOffenseDefenseAverages(games: GamesCollection<'team'>):
     return Object.keys(averages).map(teamId => {
         const id = parseInt(teamId)
         return { teamId: id, offense: averages[id].offense, defense: averages[id].defense }
-    })}
+    })
+}
+
+export function calculateTotalPointsOccurences(games: GamesCollection<'none'>): { totalPoints: number, games: GamesCollection<'none'> }[] {
+    const occurences: { [totalPoints: number]: GamesCollection<'none'> } = {}
+
+    for (const game of games) {
+        const totalPoints = game.winnerPoints + game.loserPoints
+        if (totalPoints in occurences) occurences[totalPoints].push(game)
+        else occurences[totalPoints] = [game]
+    }
+
+    return Object.keys(occurences).map(totalPoints => {
+        const points = parseInt(totalPoints)
+        return { totalPoints: points, games: occurences[points] }
+    })
+}
