@@ -1,6 +1,6 @@
-import { BarElement, CategoryScale, Chart, Filler, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from 'chart.js'
+import { ArcElement, BarElement, CategoryScale, Chart, Filler, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from 'chart.js'
 
-Chart.register(LineElement, BarElement, PointElement, Filler, CategoryScale, LinearScale, Tooltip, Title, Legend)
+Chart.register(LineElement, BarElement, PointElement, ArcElement, Filler, CategoryScale, LinearScale, Tooltip, Title, Legend)
 
 interface ChartsProviderProps {
     children?: React.ReactNode

@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2'
 import { TeamsCollection } from '../../models'
 import { ChartData, ChartOptions } from 'chart.js'
-import { GRAY, setOpacity } from '../../utilities/colors'
+import { GRAY, setOpacity } from '../../utilities'
 
 interface TeamsAveragesChartProps {
     teams: TeamsCollection

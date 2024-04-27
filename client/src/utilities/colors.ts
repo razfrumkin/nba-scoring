@@ -10,5 +10,6 @@ export function setOpacity(hexColor: string, opacity: number): string {
 }
 
 export const GREEN = '#4bc0c0'
+export const YELLOW = '#ffce56'
 export const RED = '#ff6384'
 export const GRAY = '#c8c8c8'

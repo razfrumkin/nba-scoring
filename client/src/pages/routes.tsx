@@ -1,3 +1,4 @@
+import CloseGamesSharesPage from './CloseGamesSharesPage'
 import MainPage from './MainPage'
 import OffenseDefensePage from './OffenseDefensePage'
 import PointDifferentialsPage from './PointDifferentialsPage'
@@ -41,6 +42,11 @@ const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
         location: '/total-points-occurences',
         label: 'Total Points Occurences',
         element: <TotalPointsOccurencesPage/>
+    },
+    {
+        location: '/close-games-shares',
+        label: 'Close Games Shares',
+        element: <CloseGamesSharesPage/>
     },
     {
         location: '*',

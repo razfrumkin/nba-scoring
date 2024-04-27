@@ -92,3 +92,21 @@ export function calculateTotalPointsOccurences(games: GamesCollection<'none'>): 
         return { totalPoints: points, games: occurences[points] }
     })
 }
+
+const ONE_POSSESION_GAME_LEAD = 3
+const BLOWOUT_LEAD = 20
+
+export function calculateLeads(games: GamesCollection<'none'>): { onePossessionGames: number, moderateLeads: number, blowouts: number } {
+    let small = 0
+    let medium = 0
+    let big = 0
+
+    for (const game of games) {
+        const difference = game.winnerPoints - game.loserPoints
+        if (difference <= ONE_POSSESION_GAME_LEAD) small += 1
+        else if (difference < BLOWOUT_LEAD) medium += 1
+        else big += 1
+    }
+
+    return { onePossessionGames: small, moderateLeads: medium, blowouts: big }
+}
