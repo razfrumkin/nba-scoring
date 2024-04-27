@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { Theme, ThemeType } from './theme'
+import { Theme, ThemeType } from '../../models'
 
 export interface IThemeContext {
     themes: { [name in ThemeType]: Theme }

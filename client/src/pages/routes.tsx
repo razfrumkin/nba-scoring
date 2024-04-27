@@ -1,7 +1,9 @@
 import MainPage from './MainPage'
+import OffenseDefensePage from './OffenseDefensePage'
 import PointDifferentialsPage from './PointDifferentialsPage'
 import SeasonScoresPage from './SeasonScoresPage'
 import StreaksPage from './StreaksPage'
+import TeamsAveragesPage from './TeamsAveragesPage'
 
 const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
     {
@@ -23,6 +25,16 @@ const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
         location: '/point-differentials',
         label: 'Point Differentials',
         element: <PointDifferentialsPage/>
+    },
+    {
+        location: '/teams-averages',
+        label: 'Teams Averages',
+        element: <TeamsAveragesPage/>
+    },
+    {
+        location: '/offense-defense',
+        label: 'Offense Defense',
+        element: <OffenseDefensePage/>
     },
     {
         location: '*',

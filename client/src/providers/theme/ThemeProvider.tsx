@@ -1,7 +1,7 @@
 import './ThemeProvider.scss'
 import { useEffect, useState } from 'react'
-import { Theme, ThemeType } from './theme'
 import { IThemeContext, ThemeContext } from './themeContext'
+import { Theme, ThemeType } from '../../models'
 
 interface ThemeProviderProps {
     children?: React.ReactNode

@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { useGamesCollection, useTheme } from '../hooks'
+import { useGamesCollection, useTeams, useTheme } from '../hooks'
 import { SeasonId, Team } from '../models'
-import { DEFAULT_TEAM, currentSeason } from '../utilities'
-import { calculateDifferentials } from '../utilities/graphData'
+import { calculateDifferentials, currentSeason } from '../utilities'
 import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData } from '../components/Charts/Static'
 import { PointDifferentialChart } from '../components/Charts'
 import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
 
 const PointDifferentialsPage = () => {
     const { properties } = useTheme()
+    const { defaultTeam } = useTeams()
 
     const [season, setSeason] = useState<SeasonId>(currentSeason())
-    const [team, setTeam] = useState<Team>(DEFAULT_TEAM)
+    const [team, setTeam] = useState<Team>(defaultTeam)
 
     const { isLoading, games } = useGamesCollection(team.id, season, 'none')
 

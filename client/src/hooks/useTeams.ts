@@ -1,18 +1,17 @@
-import { useQuery } from 'react-query'
-import { TeamsCollection } from '../models'
-import { fetchTeams } from '../api'
+import { useContext } from 'react'
+import { Team, TeamsCollection } from '../models'
+import { NBAContext } from '../providers/nba/nbaContext'
 
 interface UseTeamsReturnType {
-    isLoading: boolean
-    teams?: TeamsCollection
+    teams: TeamsCollection
+    defaultTeam: Team
 }
 
 const useTeams = (): UseTeamsReturnType => {
-    const results = useQuery({ queryKey: ['teams'], queryFn: async() => {
-        return fetchTeams('all')
-    }, refetchOnWindowFocus: false })
+    const context = useContext(NBAContext)
+    if (context === null) throw new Error('useTeams must be within NBAProvider')
 
-    return { isLoading: results.isLoading, teams: results.data }
+    return { teams: context.teams, defaultTeam: context.defaultTeam! }
 }
 
 export default useTeams

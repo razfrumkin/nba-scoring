@@ -4,6 +4,7 @@ import { ThemeProvider } from './providers/theme'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ChartsProvider } from './providers/charts'
 import ROUTES from './pages/routes'
+import { NBAProvider } from './providers/nba'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -19,7 +20,9 @@ const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <ThemeProvider>
-                <ChartRouter/>
+                <NBAProvider>
+                    <ChartRouter/>
+                </NBAProvider>
             </ThemeProvider>
         </QueryClientProvider>
     )
