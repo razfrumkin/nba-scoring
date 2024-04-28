@@ -17,7 +17,7 @@ body {
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    line-height: 1.5;
+    line-height: 1;
 }
 
 a {
@@ -41,14 +41,22 @@ img {
     height: auto;
 }
 
+:root {
+    --text-color: rgb(5, 8, 12);
+    --secondary-text-color: rgb(127, 125, 129);
+    --dark-background-color: rgb(42, 55, 69);
+    --background-color: rgb(244, 244, 248);
+    --placeholder-text-color: rgb(127, 125, 129);
+}
+
 .layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100vw;
     height: 100vh;
-    background-color: var(--background-color);
+    background: var(--background-color);
     color: var(--text-color);
-    font-family: "Outfit", sans-serif;
+    font-family: 'Outfit', sans-serif;
 
     main {
         background: var(--background-color);

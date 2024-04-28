@@ -1,4 +1,3 @@
-import { ScoresHeatMapChart } from '../components/Charts'
 import CloseGamesSharesPage from './CloseGamesSharesPage'
 import MainPage from './MainPage'
 import OffenseDefensePage from './OffenseDefensePage'

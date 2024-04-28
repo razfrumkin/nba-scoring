@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useGamesCollection, useTeams, useTheme } from '../hooks'
+import { useGamesCollection, useTeams } from '../hooks'
 import { SeasonId, Team } from '../models'
 import { currentSeason } from '../utilities'
 import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
@@ -7,8 +7,9 @@ import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndica
 import { SeasonScoresChart } from '../components/Charts'
 
 const SeasonScoresPage = () => {
-    const { properties } = useTheme()
     const { defaultTeam } = useTeams()
+
+    const [exportImage, setExportImage] = useState<boolean>(false)
 
     const [season, setSeason] = useState<SeasonId>(currentSeason())
     const [team, setTeam] = useState<Team>(defaultTeam)
@@ -20,15 +21,15 @@ const SeasonScoresPage = () => {
         if ((games ?? []).length === 0) return <NoChartData/>
 
         return (
-            <ChartContainer>
-                <SeasonScoresChart games={games!} team={team} foregroundColor={properties.textColor} maintainAspectRatio={false} responsive/>
+            <ChartContainer exportImage={exportImage} setExportImage={setExportImage}>
+                <SeasonScoresChart games={games!} team={team} maintainAspectRatio={false} responsive/>
             </ChartContainer>
         )
     }
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Season Scores Chart" information="Some info">
+            <ChartOptionsBar title="Season Scores Chart" information="Some info" onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)} excludeOptionAll/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam((value ?? team) as Team)} excludeOptionAll/>
             </ChartOptionsBar>

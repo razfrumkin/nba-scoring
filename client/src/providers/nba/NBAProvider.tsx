@@ -1,6 +1,7 @@
 import { INBAContext, NBAContext } from './nbaContext'
 import { fetchTeams } from '../../api'
 import { useQuery } from 'react-query'
+import { LoadingChartIndicator } from '../../components/Charts/Static'
 
 const LOS_ANGELES_LAKERS_TEAM_ID = 1610612747 // default team
 
@@ -23,7 +24,7 @@ const NBAProvider: React.FC<NBAProviderProps> = ({ children }) => {
 
     return (
         <NBAContext.Provider value={defaultValue}>
-            {results.isLoading || defaultTeam === null ? <span>Loading...</span> : children}
+            {results.isLoading || defaultTeam === null ? <LoadingChartIndicator/> : children}
         </NBAContext.Provider>
     )
 }

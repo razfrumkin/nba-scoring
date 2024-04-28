@@ -1,4 +1,3 @@
-import '../../providers/theme/ThemeProvider.scss'
 import { Line } from 'react-chartjs-2'
 import { Game, Team } from '../../models'
 import { ChartData, ChartOptions } from 'chart.js'
@@ -7,12 +6,11 @@ import { GREEN, RED, formatDate, setOpacity } from '../../utilities'
 interface StreaksChartProps {
     team: Team
     streaks: { streak: number, game: Game }[]
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, foregroundColor, maintainAspectRatio, responsive }) => {
+const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, maintainAspectRatio, responsive }) => {
     const data: ChartData<'line'> = {
         labels: streaks.map(streak => formatDate(new Date(streak.game.date))),
         datasets: [
@@ -30,13 +28,6 @@ const StreaksChart: React.FC<StreaksChartProps> = ({ team, streaks, foregroundCo
     }
 
     const options: ChartOptions<'line'> = {
-        scales: {
-            y: {
-                ticks: {
-                    color: foregroundColor
-                }
-            }
-        },
         plugins: {
             legend: {
                 display: false

@@ -2,14 +2,32 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 3rem;
+    gap: 1.5rem;
 
     .title {
         text-transform: uppercase;
-        font-size: 64px;
+        font-size: 48px;
     }
 
     .spacer {
         flex: 1;
+    }
+
+    .save-button {
+        background-color: var(--dark-background-color);
+        color: var(--background-color);
+        padding: 1rem;
+        border-radius: 5px;
+        font-family: 'Outfit', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    svg {
+        height: 25px;
+        aspect-ratio: 1;
+        object-fit: cover;
+        fill: var(--text-color);
     }
 }

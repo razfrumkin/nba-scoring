@@ -1,18 +1,16 @@
 import { ChartData, ChartOptions } from 'chart.js'
 import { TeamsCollection } from '../../models'
 import { Scatter } from 'react-chartjs-2'
-import { setOpacity } from '../../utilities'
-import { GRAY } from '../../utilities/colors'
+import { GRAY, setOpacity } from '../../utilities'
 
 interface OffenseDefenseChartProps {
     teams: TeamsCollection
     averages: { teamId: number, offense: number, defense: number }[],
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const OffenseDefenseChart: React.FC<OffenseDefenseChartProps> = ({ teams, averages, foregroundColor, maintainAspectRatio, responsive }) => {
+const OffenseDefenseChart: React.FC<OffenseDefenseChartProps> = ({ teams, averages, maintainAspectRatio, responsive }) => {
     const data: ChartData<'scatter'> = {
         datasets: [
             {
@@ -31,9 +29,6 @@ const OffenseDefenseChart: React.FC<OffenseDefenseChartProps> = ({ teams, averag
     const options: ChartOptions<'scatter'> = {
         scales: {
             y: {
-                ticks: {
-                    color: foregroundColor
-                },
                 reverse: true
             }
         },
@@ -43,10 +38,13 @@ const OffenseDefenseChart: React.FC<OffenseDefenseChartProps> = ({ teams, averag
             },
             tooltip: {
                 callbacks: {
+                    title: items => {
+                        const data = averages[items[0].dataIndex]
+                        return teams[data.teamId]?.fullName ?? 'Unknown'
+                    },
                     label: context => {
                         const data = averages[context.dataIndex]
-                        const team = teams[data.teamId]
-                        return `${team?.fullName ?? 'Unknown'} | Offense: ${data.offense.toFixed(1)}, defense: ${data.defense.toFixed(1)}`
+                        return [`Offense: ${data.offense.toFixed(1)}`, `Defense: ${data.defense.toFixed(1)}`]
                     }
                 }
             }

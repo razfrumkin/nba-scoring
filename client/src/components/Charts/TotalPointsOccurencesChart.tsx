@@ -5,12 +5,11 @@ import { Bar } from 'react-chartjs-2'
 
 interface TotalPointsOccurencesChartProps {
     occurences: { totalPoints: number, games: GamesCollection<'none'> }[]
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const TotalPointsOccurencesChart: React.FC<TotalPointsOccurencesChartProps> = ({ occurences, foregroundColor, maintainAspectRatio, responsive }) => {
+const TotalPointsOccurencesChart: React.FC<TotalPointsOccurencesChartProps> = ({ occurences, maintainAspectRatio, responsive }) => {
     const data: ChartData<'bar'> = {
         labels: occurences.map(occurence => occurence.totalPoints),
         datasets: [
@@ -23,19 +22,16 @@ const TotalPointsOccurencesChart: React.FC<TotalPointsOccurencesChartProps> = ({
     }
 
     const options: ChartOptions<'bar'> = {
-        scales: {
-            y: {
-                ticks: {
-                    color: foregroundColor
-                }
-            }
-        },
         plugins: {
             legend: {
                 display: false
             },
             tooltip: {
                 callbacks: {
+                    title: items => {
+                        const data = occurences[items[0].dataIndex]
+                        return `${data.totalPoints} total points`
+                    },
                     label: context => {
                         const data = occurences[context.dataIndex]
                         return `${data.games.length} appearance${data.games.length > 1 ? 's' : ''}`

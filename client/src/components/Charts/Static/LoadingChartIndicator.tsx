@@ -1,6 +1,12 @@
+import './LoadingChartIndicator.scss'
+
 const LoadingChartIndicator = () => {
     return (
-        <span>Loading chart...</span>
+        <div className="spinner-container">
+            <div className="spinner">
+
+            </div>
+        </div>
     )
 }
 

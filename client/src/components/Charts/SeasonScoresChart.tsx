@@ -6,12 +6,11 @@ import { formatDate } from '../../utilities'
 interface SeasonScoresChartProps {
     team: Team
     games: GamesCollection<'none'>
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, foregroundColor, maintainAspectRatio, responsive }) => {
+const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, maintainAspectRatio, responsive }) => {
     const data: ChartData<'line'> = {
         labels: games.map(game => formatDate(new Date(game.date))),
         datasets: [
@@ -30,19 +29,6 @@ const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, fore
     }
 
     const options: ChartOptions<'line'> = {
-        scales: {
-            x: {
-                ticks: {
-                    maxTicksLimit: 10
-                }
-            },
-            y: {
-                ticks: {
-                    color: foregroundColor,
-                    maxTicksLimit: 10
-                }
-            }
-        },
         plugins: {
             legend: {
                 display: false

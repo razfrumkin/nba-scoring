@@ -15,9 +15,10 @@ interface SearchableDropdownProps<T> {
     resultsListMaxHeight?: string | number
     placeholder?: string
     disabled?: boolean
+    uppercase?: boolean
 }
 
-const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallback, getLabelCallback, getElementCallback, loadingElement, width, resultsListMaxHeight, placeholder, disabled }: SearchableDropdownProps<T>) => {
+const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallback, getLabelCallback, getElementCallback, loadingElement, width, resultsListMaxHeight, placeholder, disabled, uppercase }: SearchableDropdownProps<T>) => {
     const [id, setId] = useState<string>('')
 
     const [prompt, setPrompt] = useState<string>('')
@@ -67,14 +68,14 @@ const SearchableDropdown = <T,>({ onChange, selected, queryCallback, getKeyCallb
     }
 
     return (
-        <div className={`searchable-dropdown ${isOpen ? 'open' : ''}`} style={{ width: width ?? '300px' }}>
+        <div className={`searchable-dropdown ${isOpen ? 'open' : ''} ${disabled ? 'disabled' : ''}`} style={{ width: width ?? '300px' }}>
             <div className="control">
                 <div className="selected-value">
                     <input ref={inputRef} type="text" value={getDisplayValue()} name="searchTerm" onChange={event => {
                         setPrompt(event.target.value)
                         setIsEditing(true)
                         onChange(null)
-                    }} onClick={toggle} placeholder={placeholder} disabled={disabled}/>
+                    }} onClick={toggle} placeholder={placeholder} disabled={disabled} style={{ textTransform: uppercase ? 'uppercase' : undefined }}/>
                 </div>
 
                 <div className="arrow"></div>

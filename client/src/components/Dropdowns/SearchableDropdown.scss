@@ -1,42 +1,61 @@
 .searchable-dropdown {
     position: relative;
-    color: var(--text-color);
     cursor: default;
-  
-    .arrow {
-        border-color: var(--text-color) transparent transparent;
-        border-style: solid;
-        border-width: 5px 5px 0;
-        content: ' ';
-        display: block;
-        margin-top: 0.3rem;
-        position: absolute;
-        right: 10px;
-        top: 14px;
-        width: 0;
-        height: 0;
-    }
-  
-    .selected-value input {
-        font-size: 1rem;
-        color: var(--text-color);
-        background-color: var(--background-color);
-        border: 1px solid var(--text-color);
-        border-radius: 10px;
-        box-sizing: border-box;
-        cursor: default;
-        outline: none;
-        padding: 10px;
-        width: 100%;
 
-        &::placeholder {
-            color: var(--placeholder-text-color)
+    &.disabled {
+        .control {
+            .arrow {
+                border-color: var(--placeholder-text-color) transparent transparent;
+            }
+    
+            .selected-value {
+                input {
+                    color: var(--placeholder-text-color);
+                    border: 2px solid var(--placeholder-text-color);
+                }
+            }
+        }
+    }
+
+    .control {
+        .arrow {
+            border-color: var(--dark-background-color) transparent transparent;
+            border-style: solid;
+            border-width: 5px 5px 0;
+            content: ' ';
+            display: block;
+            margin-top: 0.5rem;
+            position: absolute;
+            right: 10px;
+            top: 14px;
+            width: 0;
+            height: 0;
+        }
+  
+        .selected-value {
+            input {
+                font-size: 1rem;
+                font-weight: 500;
+                font-family: 'Outfit', sans-serif;
+                color: var(--dark-background-color);
+                background-color: var(--background-color);
+                border: 2px solid var(--dark-background-color);
+                border-radius: 5px;
+                box-sizing: border-box;
+                cursor: default;
+                outline: none;
+                padding: 0.75rem;
+                width: 100%;
+
+                &::placeholder {
+                    color: var(--placeholder-text-color);
+                }
+            }
         }
     }
   
     .options {
         display: none;
-        border: 1px solid var(--text-color);
         box-sizing: border-box;
         margin-top: -1px;
         overflow-y: auto;
@@ -46,8 +65,8 @@
         z-index: 1000;
         -webkit-overflow-scrolling: touch;
         border-radius: 10px;
-        background-color: rgba(var(--secondary-background-color), 0.1);
-        backdrop-filter: blur(50px);
+        background-color: rgba(var(--text-color), 0.1);
+        backdrop-filter: blur(100px);
     }
 
     &.open {
@@ -60,7 +79,7 @@
             display: block;
 
             > * {
-                border-bottom: 1px solid var(--text-color);
+                border-bottom: 1px solid var(--secondary-text-color);
     
                 &:last-child {
                     border-bottom: none;

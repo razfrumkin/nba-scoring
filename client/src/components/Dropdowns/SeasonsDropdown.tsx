@@ -38,7 +38,7 @@ const SeasonsDropdown: React.FC<SeasonsDropdownProps> = ({ selectedSeason, onCha
     }
 
     return (
-        <SearchableDropdown onChange={onChange} selected={selectedSeason} queryCallback={querySeasons} getKeyCallback={key} getLabelCallback={label} getElementCallback={seasonElement} loadingElement={<span>Loading...</span>} width={width} resultsListMaxHeight={resultsListMaxHeight} placeholder="Select a season..." disabled={disabled}/>
+        <SearchableDropdown onChange={onChange} selected={selectedSeason} queryCallback={querySeasons} getKeyCallback={key} getLabelCallback={label} getElementCallback={seasonElement} loadingElement={<span>Loading...</span>} width={width ?? '200px'} resultsListMaxHeight={resultsListMaxHeight} placeholder="Select a season..." disabled={disabled} uppercase/>
     )
 }
 

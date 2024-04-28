@@ -1,6 +1,8 @@
+import { LoadingChartIndicator } from '../components/Charts/Static'
+
 const MainPage = () => {
     return (
-        <span>Main page</span>
+        <LoadingChartIndicator/>
     )
 }
 

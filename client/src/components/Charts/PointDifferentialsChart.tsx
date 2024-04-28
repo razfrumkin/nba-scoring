@@ -6,12 +6,11 @@ import { GREEN, RED, formatDate, setOpacity } from '../../utilities'
 interface PointDifferentialsChartProps {
     team: Team
     differentials: { differential: number, game: Game }[]
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const PointDifferentialsChart: React.FC<PointDifferentialsChartProps> = ({ team, differentials, foregroundColor, maintainAspectRatio, responsive }) => {
+const PointDifferentialsChart: React.FC<PointDifferentialsChartProps> = ({ team, differentials, maintainAspectRatio, responsive }) => {
     const data: ChartData<'bar'> = {
         labels: differentials.map(differential => formatDate(new Date(differential.game.date))),
         datasets: [
@@ -23,13 +22,6 @@ const PointDifferentialsChart: React.FC<PointDifferentialsChartProps> = ({ team,
     }
 
     const options: ChartOptions<'bar'> = {
-        scales: {
-            y: {
-                ticks: {
-                    color: foregroundColor
-                }
-            }
-        },
         plugins: {
             legend: {
                 display: false

@@ -1,11 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
 import './NavigationBar.scss'
-import { useTheme } from '../../hooks'
 import ROUTES from '../../pages/routes'
 
 const NavigationBar = () => {
     const location = useLocation()
-    const { theme, toggleTheme } = useTheme()
 
     return (
         <nav className="navigation-bar">
@@ -20,7 +18,11 @@ const NavigationBar = () => {
                     : <></>
                 })}
 
-                <li><button onClick={toggleTheme}>{theme}</button></li>
+                <li className="spacer"/>
+
+                <li className="credit">
+                    <span className="credit">Data provided by <Link to="https://www.nba.com/stats" target="_blank" rel="noopener noreferrer">stats.nba.com</Link></span>
+                </li>
             </ul>
         </nav>
     )

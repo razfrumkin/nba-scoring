@@ -38,7 +38,7 @@ const TeamsDropdown: React.FC<TeamsDropdownProps> = ({ selectedTeam, onChange, e
     }
 
     return (
-        <SearchableDropdown onChange={onChange} selected={selectedTeam} queryCallback={queryTeams} getKeyCallback={key} getLabelCallback={label} getElementCallback={teamElement} loadingElement={<span>Loading...</span>} width={width} resultsListMaxHeight={resultsListMaxHeight} placeholder="Select a team..." disabled={disabled}/>
+        <SearchableDropdown onChange={onChange} selected={selectedTeam} queryCallback={queryTeams} getKeyCallback={key} getLabelCallback={label} getElementCallback={teamElement} loadingElement={<span>Loading...</span>} width={width ?? '250px'} resultsListMaxHeight={resultsListMaxHeight} placeholder="Select a team..." disabled={disabled} uppercase/>
     )
 }
 

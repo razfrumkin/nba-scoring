@@ -1,12 +1,13 @@
+import { useState } from 'react'
 import { ScoresHeatMapChart } from '../components/Charts'
 import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData } from '../components/Charts/Static'
-import { useGamesCollection, useTheme } from '../hooks'
+import { useGamesCollection } from '../hooks'
 import { sortByScores } from '../utilities'
 
 const ScoresHeatMapPage = () => {
-    const { properties } = useTheme()
-
     const { isLoading, games } = useGamesCollection('all', 'all', 'none')
+
+    const [exportImage, setExportImage] = useState<boolean>(false)
 
     const scores = sortByScores(games ?? [])
 
@@ -15,15 +16,15 @@ const ScoresHeatMapPage = () => {
         if (scores.length === 0) return <NoChartData/>
 
         return (
-            <ChartContainer>
-                <ScoresHeatMapChart scores={scores} foregroundColor={properties.textColor} maintainAspectRatio={false} responsive/>
+            <ChartContainer exportImage={exportImage} setExportImage={setExportImage}>
+                <ScoresHeatMapChart scores={scores} maintainAspectRatio={false} responsive/>
             </ChartContainer>
         )
     }
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Scores Heat Map Chart" information="Some info"/>
+            <ChartOptionsBar title="Scores Heat Map Chart" information="Some info" onExport={() => setExportImage(true)}/>
 
             {renderChart()}
         </ChartPageContainer>

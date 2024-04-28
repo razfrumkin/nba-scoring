@@ -5,12 +5,11 @@ import { ChartData, ChartOptions } from 'chart.js'
 
 interface ScoresHeatMapChartProps {
     scores: { score: string, games: GamesCollection<'none'> }[]
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const ScoresHeatMapChart: React.FC<ScoresHeatMapChartProps> = ({ scores, foregroundColor, maintainAspectRatio, responsive }) => {
+const ScoresHeatMapChart: React.FC<ScoresHeatMapChartProps> = ({ scores, maintainAspectRatio, responsive }) => {
     const data: ChartData<'scatter'> = {
         datasets: [
             {
@@ -30,13 +29,6 @@ const ScoresHeatMapChart: React.FC<ScoresHeatMapChartProps> = ({ scores, foregro
     }
 
     const options: ChartOptions<'scatter'> = {
-        scales: {
-            y: {
-                ticks: {
-                    color: foregroundColor
-                }
-            }
-        },
         plugins: {
             legend: {
                 display: false

@@ -4,12 +4,11 @@ import { GREEN, RED, YELLOW, setOpacity } from "../../utilities"
 
 interface CloseGamesSharesChartProps {
     leads: { onePossessionGames: number, moderateLeads: number, blowouts: number }
-    foregroundColor?: string
     maintainAspectRatio?: boolean
     responsive?: boolean
 }
 
-const CloseGamesSharesChart: React.FC<CloseGamesSharesChartProps> = ({ leads, foregroundColor, maintainAspectRatio, responsive }) => {
+const CloseGamesSharesChart: React.FC<CloseGamesSharesChartProps> = ({ leads, maintainAspectRatio, responsive }) => {
     const data: ChartData<'pie'> = {
         labels: ['One Possesion Games', 'Moderate Leads', 'Blowouts'],
         datasets: [
@@ -23,13 +22,6 @@ const CloseGamesSharesChart: React.FC<CloseGamesSharesChartProps> = ({ leads, fo
     }
 
     const options: ChartOptions<'pie'> = {
-        plugins: {
-            legend: {
-                labels: {
-                    color: foregroundColor
-                }
-            }
-        },
         maintainAspectRatio: maintainAspectRatio,
         responsive: responsive
     }
