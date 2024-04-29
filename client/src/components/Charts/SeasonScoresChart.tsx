@@ -29,6 +29,11 @@ const SeasonScoresChart: React.FC<SeasonScoresChartProps> = ({ team, games, main
     }
 
     const options: ChartOptions<'line'> = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
         plugins: {
             legend: {
                 display: false
