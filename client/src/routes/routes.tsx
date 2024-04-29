@@ -48,8 +48,8 @@ const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
     },
     {
         location: '*',
-        element: <span>Page Not Found</span>
+        element: <Navigate to="/" replace/>
     }
-] as const
+]
 
 export default ROUTES
