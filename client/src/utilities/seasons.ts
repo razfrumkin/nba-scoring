@@ -10,3 +10,8 @@ export function getAvailableSeasons(): { id: SeasonId, year: number }[] {
         return { id: season, year: year }
     })
 }
+
+export function seasonToYear(season: SeasonId): number {
+    const yearString = season.split('-')[0]
+    return parseInt(yearString)
+}

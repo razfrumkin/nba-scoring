@@ -5,15 +5,6 @@ export function yearToSeason(year: number): SeasonId {
     return `${year}-${lastTwoDigits}`
 }
 
-export function seasonToYear(season: SeasonId): number {
-    const yearString = season.split('-')[0]
-    return parseInt(yearString)
-}
-
-export function currentSeason(): SeasonId {
-    return yearToSeason(currentYear() - 1)
-}
-
 export function currentYear(): number {
     return new Date().getFullYear()
 }

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import './NavigationBar.scss'
-import ROUTES from '../../pages/routes'
+import { ROUTES } from '../../routes'
 
 const NavigationBar = () => {
     const location = useLocation()

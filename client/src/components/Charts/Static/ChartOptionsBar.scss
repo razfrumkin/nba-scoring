@@ -7,6 +7,8 @@
     .title {
         text-transform: uppercase;
         font-size: 48px;
+        color: var(--accent-color);
+        font-weight: 500;
     }
 
     .spacer {
@@ -14,7 +16,7 @@
     }
 
     .save-button {
-        background-color: var(--dark-background-color);
+        background-color: var(--accent-color);
         color: var(--background-color);
         padding: 1rem;
         border-radius: 5px;
@@ -28,6 +30,6 @@
         height: 25px;
         aspect-ratio: 1;
         object-fit: cover;
-        fill: var(--text-color);
+        fill: var(--accent-color);
     }
 }

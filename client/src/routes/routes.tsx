@@ -1,18 +1,15 @@
-import CloseGamesSharesPage from './CloseGamesSharesPage'
-import MainPage from './MainPage'
-import OffenseDefensePage from './OffenseDefensePage'
-import PointDifferentialsPage from './PointDifferentialsPage'
-import ScoresHeatMapPage from './ScoresHeatMapPage'
-import SeasonScoresPage from './SeasonScoresPage'
-import StreaksPage from './StreaksPage'
-import TeamsAveragesPage from './TeamsAveragesPage'
-import TotalPointsOccurencesPage from './TotalPointsOccurencesPage'
+import { Navigate } from 'react-router-dom'
+import { CloseGamesSharesPage, OffenseDefensePage, PointDifferentialsPage, ScoresHeatMapPage, SeasonScoresPage, StreaksPage, TeamsAveragesPage, TotalPointsOccurencesPage } from '../pages'
 
 const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
     {
         location: '/',
-        label: 'Main',
-        element: <MainPage/>
+        element: <Navigate to="/point-differentials" replace/>
+    },
+    {
+        location: '/point-differentials',
+        label: 'Point Differentials',
+        element: <PointDifferentialsPage/>
     },
     {
         location: '/streaks',
@@ -25,9 +22,9 @@ const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
         element: <SeasonScoresPage/>
     },
     {
-        location: '/point-differentials',
-        label: 'Point Differentials',
-        element: <PointDifferentialsPage/>
+        location: '/close-games-shares',
+        label: 'Close Games Shares',
+        element: <CloseGamesSharesPage/>
     },
     {
         location: '/teams-averages',
@@ -43,11 +40,6 @@ const ROUTES: { location: string, label?: string, element: JSX.Element }[] = [
         location: '/total-points-occurences',
         label: 'Total Points Occurences',
         element: <TotalPointsOccurencesPage/>
-    },
-    {
-        location: '/close-games-shares',
-        label: 'Close Games Shares',
-        element: <CloseGamesSharesPage/>
     },
     {
         location: '/scores-heat-map',

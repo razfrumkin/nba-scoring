@@ -5,7 +5,7 @@
     gap: 0.3rem;
 
     &.selected, &:hover {
-        background-color: var(--dark-background-color);
+        background-color: var(--accent-color);
         cursor: pointer;
 
         span {

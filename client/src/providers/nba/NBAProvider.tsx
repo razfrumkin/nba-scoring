@@ -2,6 +2,7 @@ import { INBAContext, NBAContext } from './nbaContext'
 import { fetchTeams } from '../../api'
 import { useQuery } from 'react-query'
 import { LoadingChartIndicator } from '../../components/Charts/Static'
+import { currentYear, yearToSeason } from '../../utilities'
 
 const LOS_ANGELES_LAKERS_TEAM_ID = 1610612747 // default team
 
@@ -19,7 +20,8 @@ const NBAProvider: React.FC<NBAProviderProps> = ({ children }) => {
 
     const defaultValue: INBAContext = {
         teams: teams,
-        defaultTeam: defaultTeam
+        defaultTeam: defaultTeam,
+        currentSeason: yearToSeason(currentYear() - 1)
     }
 
     return (

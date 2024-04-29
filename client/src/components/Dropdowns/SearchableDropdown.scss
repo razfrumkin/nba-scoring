@@ -19,7 +19,7 @@
 
     .control {
         .arrow {
-            border-color: var(--dark-background-color) transparent transparent;
+            border-color: var(--accent-color) transparent transparent;
             border-style: solid;
             border-width: 5px 5px 0;
             content: ' ';
@@ -37,9 +37,9 @@
                 font-size: 1rem;
                 font-weight: 500;
                 font-family: 'Outfit', sans-serif;
-                color: var(--dark-background-color);
+                color: var(--accent-color);
                 background-color: var(--background-color);
-                border: 2px solid var(--dark-background-color);
+                border: 2px solid var(--accent-color);
                 border-radius: 5px;
                 box-sizing: border-box;
                 cursor: default;

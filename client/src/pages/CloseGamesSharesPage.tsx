@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useGamesCollection } from '../hooks'
+import { useGamesCollection, useSeasons } from '../hooks'
 import { SeasonId, Team } from '../models'
 import { calculateLeads } from '../utilities'
 import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
@@ -7,10 +7,12 @@ import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndica
 import { CloseGamesSharesChart } from '../components/Charts'
 
 const CloseGamesSharesPage = () => {
+    const { currentSeason } = useSeasons()
+
     const [exportImage, setExportImage] = useState<boolean>(false)
 
-    const [season, setSeason] = useState<SeasonId | 'all'>('all')
     const [team, setTeam] = useState<Team | 'all'>('all')
+    const [season, setSeason] = useState<SeasonId | 'all'>(currentSeason)
 
     const { isLoading, games } = useGamesCollection(team === 'all' ? 'all' : team.id, season, 'none')
 

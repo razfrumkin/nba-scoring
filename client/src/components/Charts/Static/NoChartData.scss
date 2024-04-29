@@ -1,0 +1,19 @@
+.no-chart-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    font-weight: 500;
+
+    .title {
+        font-size: 100px;
+        color: var(--accent-color);
+    }
+
+    .subtitle {
+        font-size: 25px;
+        color: var(--secondary-text-color);
+    }
+}

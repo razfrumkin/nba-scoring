@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import { useGamesCollection, useTeams } from '../hooks'
+import { useGamesCollection, useSeasons, useTeams } from '../hooks'
 import { SeasonId, Team } from '../models'
-import { currentSeason } from '../utilities'
 import { SeasonsDropdown, TeamsDropdown } from '../components/Dropdowns'
 import { ChartContainer, ChartOptionsBar, ChartPageContainer, LoadingChartIndicator, NoChartData } from '../components/Charts/Static'
 import { SeasonScoresChart } from '../components/Charts'
 
 const SeasonScoresPage = () => {
     const { defaultTeam } = useTeams()
+    const { currentSeason } = useSeasons()
 
     const [exportImage, setExportImage] = useState<boolean>(false)
 
-    const [season, setSeason] = useState<SeasonId>(currentSeason())
     const [team, setTeam] = useState<Team>(defaultTeam)
+    const [season, setSeason] = useState<SeasonId>(currentSeason)
 
     const { isLoading, games } = useGamesCollection(team.id, season, 'none')
 
