@@ -33,7 +33,7 @@ const StreaksPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Streaks Chart" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Streaks" information="Displays the current win or loss streak for a selected NBA team and a season, with green indicating win streaks and red indicating losing streaks." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)} excludeOptionAll/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam((value ?? team) as Team)} excludeOptionAll/>
             </ChartOptionsBar>

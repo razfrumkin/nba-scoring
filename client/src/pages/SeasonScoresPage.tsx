@@ -29,7 +29,7 @@ const SeasonScoresPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Season Scores Chart" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Season Scores" information="Plots every score of a selected NBA team in a season." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)} excludeOptionAll/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam((value ?? team) as Team)} excludeOptionAll/>
             </ChartOptionsBar>

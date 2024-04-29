@@ -30,7 +30,7 @@ const TotalPointsOccurencesPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Total Points Occurences" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Total Points Occurences" information="Counts the total occurrences of each score in NBA games for a selected season or all seasons. Each score is calculated by summing the points scored by the winning and losing teams in a game." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)}/>
             </ChartOptionsBar>
 

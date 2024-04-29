@@ -31,7 +31,7 @@ const TeamsAveragesPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Teams Average Points" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Teams Average Points" information="Displays the average points scored by each NBA team for a selected season or all seasons." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)}/>
             </ChartOptionsBar>
 

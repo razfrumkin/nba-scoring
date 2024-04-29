@@ -31,7 +31,7 @@ const CloseGamesSharesPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Close Games Shares" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Close Games Shares" information="Represents the distribution of close games for a selected NBA team or all teams across a selected season or all seasons, categorized into one possession games, blowouts and moderate leads." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)}/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam(value ?? team)}/>
             </ChartOptionsBar>

@@ -32,7 +32,7 @@ const PointDifferentialsPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Point Differentials Chart" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Point Differentials" information="Visualizes point differentials for each game of a selected NBA team and season, with green indicating a positive point differential and red indicating negative." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)} excludeOptionAll/>
                 <TeamsDropdown selectedTeam={team} onChange={value => setTeam((value ?? team) as Team)} excludeOptionAll/>
             </ChartOptionsBar>

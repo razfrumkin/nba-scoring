@@ -17,7 +17,7 @@
         visibility: hidden;
         background-color: rgba(var(--text-color), 0.1);
         backdrop-filter: blur(50px);
-        color: var(--text-color);
+        color: var(--accent-color);
         text-align: center;
         padding: 5px;
         border-radius: 5px;
@@ -26,7 +26,9 @@
         top: calc(100% + 5px);
         left: 50%;
         transform: translateX(-50%);
-        max-width: 200px;
+        width: 150px;
+        line-height: 1.5;
+        font-size: 1rem;
 
         &.show {
             visibility: visible;
@@ -40,7 +42,7 @@
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: transparent transparent var(--text-color) transparent;
+            border-color: transparent transparent var(--accent-color) transparent;
         }
     }
 }

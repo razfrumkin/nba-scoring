@@ -31,7 +31,7 @@ const OffenseDefensePage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Teams Offense Defense" information="Some info" onExport={() => setExportImage(true)}>
+            <ChartOptionsBar title="Teams Offense Defense" information="Compares the offensive and defensive performance of each NBA team for a selected season or all seasons." onExport={() => setExportImage(true)}>
                 <SeasonsDropdown selectedSeason={season} onChange={value => setSeason(value ?? season)}/>
             </ChartOptionsBar>
 

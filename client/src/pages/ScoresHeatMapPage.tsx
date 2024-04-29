@@ -24,7 +24,7 @@ const ScoresHeatMapPage = () => {
 
     return (
         <ChartPageContainer>
-            <ChartOptionsBar title="Scores Heat Map Chart" information="Some info" onExport={() => setExportImage(true)}/>
+            <ChartOptionsBar title="Scores Heat Map" information="Displays a heat map of every NBA game score in history, where the x-axis represents the winning team's score and the y-axis represents the point differential between the winning and losing teams." onExport={() => setExportImage(true)}/>
 
             {renderChart()}
         </ChartPageContainer>
