@@ -3,7 +3,10 @@ from fetching import fetch
 from persistence import persist
 
 def setup():
-    pass
+    fetch('teams', 'all')
+    fetch('games', 'all')
+    persist('teams', 'all')
+    persist('games', 'all')
 
 def main(*arguments: list[str]):
     if len(arguments) == 0:
@@ -18,10 +21,7 @@ def main(*arguments: list[str]):
         return persist(*arguments[1:])
     
     if command == 'setup':
-        fetch('teams', 'all')
-        fetch('games', 'all')
-        persist('teams', 'all')
-        persist('games', 'all')
+        return setup()
     
     print(f'Invalid command \'{command}\'')
 
