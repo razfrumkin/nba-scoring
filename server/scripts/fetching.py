@@ -38,7 +38,7 @@ def fetch_games(*arguments: list[str]):
         return fetch_latest_games()
     
     if season_type == 'all':
-        return fetch_all_games(3)
+        return fetch_all_games(5)
         
     if season_type == 'specific':
         if len(arguments) == 1:
